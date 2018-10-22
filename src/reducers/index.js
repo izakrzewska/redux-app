@@ -1,42 +1,74 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-	count: 45,
+	posssibleTime: [
+		{
+			description: 'today',
+			id: 'today'
+		},
+		{
+			description: 'tomorrow',
+			id: 'tomorrow'
+		},
+		{
+			description: 'next week',
+			id: 'nextWeek'
+		},
+		{
+			description: 'some day',
+			id: 'someDay'
+		},
+	],
 	tasks: [],
 	taskBody: ''
 };
-
-const addOne = (state, action) => {
-	return Object.assign({}, state, {
-		count: state.count + 1
-	})
-}
-
-const removeOne = (state, action) => {
-	return Object.assign({}, state, {
-		count: state.count - 1
-	})
-}
 
 const addTask = (state, action) => {
 	return Object.assign({}, state, {
 		tasks: [
 			...state.tasks,
 			{
-				taskBody: action.taskBody
+				taskBody: action.taskBody,
+				done: false,
+				id: action.id,
+				time: action.time
 			}
 		]
 	});
 }
 
+const markAsDone = (state, action) => {
+	return Object.assign({}, state, {
+		tasks: state.tasks.map(task => {
+			if (task.id === action.id) {
+				return Object.assign({}, task, {
+					done: !task.done
+				});
+			}
+			return task
+		})
+	})
+}
+
+const deleteTask = (state, action) => {
+	return Object.assign({}, state, {
+		tasks: state.tasks.filter(task => {
+			if (action.id !== task.id) {
+				return task
+			}
+			return task
+		})
+	})
+}
+
 export default function reducer(state = initialState, action) {
 	switch ( action.type ) {
-        case actionTypes.INCREMENT:
-					return addOne( state, action );
-				case actionTypes.DECREMENT:
-					return removeOne( state, action );
 				case actionTypes.ADD_TASK:
 					return addTask(state, action);
+				case actionTypes.MARK_AS_DONE:
+					return markAsDone(state, action);
+				case actionTypes.DELETE_TASK:
+					return deleteTask(state, action);
 				default:
 					return state;
 	}

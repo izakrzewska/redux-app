@@ -1,0 +1,7 @@
+.board__space {
+  border: 1px solid black;
+}
+
+.task--done {
+  text-decoration: line-through;
+}

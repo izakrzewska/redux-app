@@ -1,34 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions/index';
-import List from './List';
+import Board from './Board.jsx';
+import AddForm from './AddForm.jsx';
 
 class TasksList extends Component {
 
   render() {
 
-let taskBody = '';
-
     return (
       <React.Fragment>
-        <input
-          id='taskBodyInput'
-          type='text'
-          onKeyDown={(event) => {
-              taskBody = event.target.value;
-
-              if ((taskBody !== '') && (event.key === 'Enter')) {
-                this.props.addTask(taskBody);
-                event.target.value = ''
-              }
-              }}
-              autoFocus />
-            <button onClick={() => {
-                this.props.addTask(taskBody)
-                document.getElementById('taskBodyInput').value = '';
-              }}>Add task</button>
-
-          <List tasks={this.props.tasks} />
+        <AddForm
+          addTask={this.props.addTask}
+          posssibleTime={this.props.posssibleTime}/>
+          <Board
+            posssibleTime={this.props.posssibleTime}
+            tasks={this.props.tasks}
+            markAsDone={this.props.markAsDone}
+            deleteTask={this.props.deleteTask}
+          />
       </React.Fragment>
     );
   }
@@ -36,15 +26,19 @@ let taskBody = '';
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.mainReducer)
   return {
-    count: state.mainReducer.count,
-    tasks: state.mainReducer.tasks
+    tasks: state.mainReducer.tasks,
+    posssibleTime: state.mainReducer.posssibleTime
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
+
   return {
-      addTask: (taskBody) => dispatch(actions.addTask(taskBody))
+      addTask: (taskBody, time) => dispatch(actions.addTask(taskBody, time)),
+      markAsDone: (id) => dispatch(actions.markAsDone(id)),
+      deleteTask: (id) => dispatch(actions.deleteTask(id))
   }
 }
 

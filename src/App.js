@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import Counter from "./Counter";
 import TasksList from './TasksList';
-
+import './App.css';
 
 class App extends Component {
 
 render() {
   return (
-    <React.Fragment >
-      <Counter />
+    <div className='App'>
       <TasksList />
-    </React.Fragment >
+    </div>
   )
 }
 }

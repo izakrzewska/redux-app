@@ -1,39 +1,51 @@
 import React from 'react';
 
 const AddForm = (props) => {
-  let taskBody = '';
-  let time = {};
 
   return (
     <div>
+      <form>
       <input
         id='taskBodyInput'
         type='text'
-        onKeyDown={(event) => {
-            taskBody = event.target.value;
+        value={props.taskBody}
+        onChange = {(event) =>
 
-            if ((taskBody !== '') && (event.key === 'Enter')) {
-              props.addTask(taskBody, time = {id: 'today', description: 'today'});
-              event.target.value = ''
-            }
-            }}
-          autoFocus />
+          {
+            props.setTaskBody(event.target.value)
+          }
+
+          }
+        autoFocus />
         <div>
-          {props.posssibleTime.map(time => {
+          {props.possibleTime.map(time => {
             return (
-              <label key={time.id} htmlFor={time.id}>
-                <input type="radio" name="posssibleTime" value={time.id} id={time.id} defaultChecked={time.id === 'today'} />
+              <label
+                key={time.id}
+                htmlFor={time.id}>
+                <input
+                  type="radio"
+                  name="possibleTime"
+                  value={time.id}
+                  id={time.id}
+                  onChange={(event) => props.chooseTime({description: event.target.description, id: event.target.id})}
+                  defaultChecked={time.id === 'today'}/>
                 {time.description}
               </label>
             );
           })}
         </div>
-        <button onClick={() => {
-            if (taskBody !== '') {
-              props.addTask(taskBody, time = {id: 'today', description: 'today'})
-              document.getElementById('taskBodyInput').value = '';
+        <button type='submit' onClick={(event) => {
+            event.preventDefault();
+            if (props.taskBody !== '') {
+              console.log(props.timeChosen, 'time z buttona')
+              props.addTask(props.taskBody, props.timeChosen)
+              props.clearInput()
             }
           }}>Add task</button>
+
+          
+          </form>
         </div>
   );
 }

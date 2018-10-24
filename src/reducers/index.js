@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-	posssibleTime: [
+	possibleTime: [
 		{
 			description: 'today',
 			id: 'today'
@@ -20,7 +20,13 @@ const initialState = {
 		},
 	],
 	tasks: [],
-	taskBody: ''
+	timeChosen: {
+		description: 'today',
+		id: 'today'
+	},
+	taskBody: '',
+	visibilityFilter: 'all',
+	visibilityOptions: ['done', 'todo', 'all']
 };
 
 const addTask = (state, action) => {
@@ -53,13 +59,39 @@ const markAsDone = (state, action) => {
 const deleteTask = (state, action) => {
 	return Object.assign({}, state, {
 		tasks: state.tasks.filter(task => {
-			if (action.id !== task.id) {
-				return task
-			}
-			return task
+				return (action.id !== task.id)
+			})
+	})
+}
+
+const chooseTime = (state, action) => {
+	return Object.assign({}, state, {
+		timeChosen: Object.assign({}, state.timeChosen, {
+			description: action.timeChosen.description,
+			id: action.timeChosen.id
 		})
 	})
 }
+
+const setTaskBody = (state, action) => {
+	return Object.assign({}, state, {
+		taskBody: action.taskBody
+	})
+}
+
+const clearInput = (state, action) => {
+	return Object.assign({}, state, {
+		taskBody: '',
+		timeChosen: Object.assign({}, state.timeChosen, {})
+	})
+}
+
+const chooseVisibility = (state, action) => {
+	return Object.assign({}, state, {
+		visibilityFilter: action.visibilityFilter
+	})
+}
+
 
 export default function reducer(state = initialState, action) {
 	switch ( action.type ) {
@@ -69,6 +101,14 @@ export default function reducer(state = initialState, action) {
 					return markAsDone(state, action);
 				case actionTypes.DELETE_TASK:
 					return deleteTask(state, action);
+				case actionTypes.CHOOSE_TIME:
+					return chooseTime(state, action);
+				case actionTypes.SET_TASK_BODY:
+					return setTaskBody(state, action);
+				case actionTypes.CLEAR_INPUT:
+					return clearInput(state, action);
+				case actionTypes.CHOOSE_VISIBILITY:
+					return chooseVisibility(state, action);
 				default:
 					return state;
 	}

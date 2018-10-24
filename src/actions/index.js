@@ -23,3 +23,30 @@ export const deleteTask = (id) => {
     id: id
   }
 }
+
+export const chooseTime = (timeChosen) => {
+  return {
+    type: actionTypes.CHOOSE_TIME,
+    timeChosen: timeChosen
+  }
+}
+
+export const setTaskBody = (taskBody) => {
+  return {
+    type: actionTypes.SET_TASK_BODY,
+    taskBody: taskBody
+  }
+}
+
+export const clearInput = () => {
+  return {
+    type: actionTypes.CLEAR_INPUT
+  }
+}
+
+export const chooseVisibility = (visibilityFilter) => {
+  return {
+    type: actionTypes.CHOOSE_VISIBILITY,
+    visibilityFilter: visibilityFilter
+  }
+}

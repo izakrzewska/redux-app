@@ -5,14 +5,15 @@ import './Board.css';
 const Board = (props) => {
   return (
     <div className='board'>
-      {props.posssibleTime.map(time => {
+      {props.possibleTime.map(time => {
         return (
           <BoardSpace
             key={time.id}
             possibleTime={time}
             tasks={props.tasks}
             markAsDone={props.markAsDone}
-            deleteTask={props.deleteTask} />
+            deleteTask={props.deleteTask}
+            visibilityFilter={props.visibilityFilter} />
         )
       })}
     </div>

@@ -5,7 +5,8 @@ import Task from './Task';
 const BoardSpace = (props) => {
 
   return (
-    <div className='board__space'>
+    <div
+      className='board__space'>
       <h2>{props.possibleTime.description}</h2>
       <ul>
         {props.tasks.map((item, index) => {

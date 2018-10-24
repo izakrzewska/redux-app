@@ -4,7 +4,6 @@ import * as actions from './actions/index';
 import Board from './Board.jsx';
 import AddForm from './AddForm.jsx';
 import VisibilityOptionForm from './VisibilityOptionForm';
-import PropTypes from 'prop-types';
 
 class TasksList extends Component {
 
@@ -37,6 +36,7 @@ class TasksList extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.mainReducer, 'state')
   return {
     tasks: state.mainReducer.tasks,
     possibleTime: state.mainReducer.possibleTime,
@@ -48,7 +48,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-
   return {
       addTask: (taskBody, time) => dispatch(actions.addTask(taskBody, time)),
       markAsDone: (id) => dispatch(actions.markAsDone(id)),

@@ -25,10 +25,11 @@ const AddForm = (props) => {
                 htmlFor={time.id}>
                 <input
                   type="radio"
+                  data-description={time.description}
                   name="possibleTime"
                   value={time.id}
                   id={time.id}
-                  onChange={(event) => props.chooseTime({description: event.target.description, id: event.target.id})}
+                  onChange={(event) => props.chooseTime({description: event.target.dataset.description, id: event.target.id})}
                   defaultChecked={time.id === 'today'}/>
                 {time.description}
               </label>
@@ -44,7 +45,7 @@ const AddForm = (props) => {
             }
           }}>Add task</button>
 
-          
+
           </form>
         </div>
   );

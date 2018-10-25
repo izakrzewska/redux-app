@@ -1,0 +1,15 @@
+.delete-form {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
+.delete-form span {
+  display: block;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.delete-form span:hover svg {
+  fill: #000;
+}

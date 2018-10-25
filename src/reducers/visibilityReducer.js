@@ -7,17 +7,17 @@ const initialState = {
       },
   visibilityOptions: [
     {
+      description: 'All tasks',
+      id: 'all'
+    },
+    {
       description: 'Done',
       id: 'done'
     },
     {
       description: 'To do',
       id: 'todo'
-    },
-    {
-      description: 'All tasks',
-      id: 'all'
-    },
+    }
   ]
 }
 

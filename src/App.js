@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TasksList from './TasksList';
+import ToDo from './containers/ToDo.jsx';
 import './App.css';
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
 render() {
   return (
     <div className='App'>
-      <TasksList />
+      <ToDo />
     </div>
   )
 }

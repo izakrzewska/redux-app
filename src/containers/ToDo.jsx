@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './actions/index';
-import Board from './Board.jsx';
-import AddForm from './AddForm.jsx';
-import VisibilityOptionForm from './VisibilityOptionForm';
+import * as actions from '../actions/index';
+import Board from '../components/Board/Board.jsx';
+import AddForm from '../components/AddForm/AddForm.jsx';
+import VisibilityOptionForm from '../components/VisibilityOptionForm/VisibilityOptionForm.jsx';
+import DeleteForm from '../components/DeleteForm/DeleteForm.jsx';
 
 class TasksList extends Component {
 
   render() {
     return (
       <React.Fragment>
+        <DeleteForm
+          enableDeleteMode={this.props.enableDeleteMode}/>
         <VisibilityOptionForm
           visibilityOptions={this.props.visibilityOptions}
           chooseVisibility={this.props.chooseVisibility}
@@ -29,6 +32,7 @@ class TasksList extends Component {
             markAsDone={this.props.markAsDone}
             deleteTask={this.props.deleteTask}
             visibilityFilter={this.props.visibilityFilter}
+            inDeleteMode={this.props.inDeleteMode}
           />
       </React.Fragment>
     );
@@ -42,7 +46,8 @@ const mapStateToProps = (state) => {
     timeChosen: state.optionsReducer.timeChosen,
     taskBody: state.optionsReducer.taskBody,
     visibilityFilter: state.visibilityReducer.visibilityFilter,
-    visibilityOptions: state.visibilityReducer.visibilityOptions
+    visibilityOptions: state.visibilityReducer.visibilityOptions,
+    inDeleteMode: state.optionsReducer.inDeleteMode
   }
 }
 
@@ -54,7 +59,8 @@ const mapDispatchToProps = (dispatch) => {
       chooseTime: (timeChosen) => dispatch(actions.chooseTime(timeChosen)),
       setTaskBody: (taskBody) => dispatch(actions.setTaskBody(taskBody)),
       clearInput: () => dispatch(actions.clearInput()),
-      chooseVisibility: (visibilityFilter) => dispatch(actions.chooseVisibility(visibilityFilter))
+      chooseVisibility: (visibilityFilter) => dispatch(actions.chooseVisibility(visibilityFilter)),
+      enableDeleteMode: () => dispatch(actions.enableDeleteMode())
   }
 }
 

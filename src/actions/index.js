@@ -50,3 +50,9 @@ export const chooseVisibility = (visibilityFilter) => {
     visibilityFilter: visibilityFilter
   }
 }
+
+export const enableDeleteMode = () => {
+  return {
+    type: actionTypes.ENABLE_DELETE_MODE
+  }
+}

@@ -1,6 +1,0 @@
-.board {
-  display: inline-grid;
-  grid-template-columns: repeat(2, 30vw);
-   grid-template-rows: repeat(2, 30vh);
-   grid-gap: 15px;
-}

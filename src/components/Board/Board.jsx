@@ -1,10 +1,10 @@
 import React from 'react';
-import BoardSpace from './BoardSpace.jsx';
+import BoardSpace from '../BoardSpace/BoardSpace.jsx';
 import './Board.css';
 
 const Board = (props) => {
   return (
-    <div className='board'>
+    <div className='uk-grid uk-grid-large uk-text-center' data-uk-grid-match uk-grid="masonry: true">
       {props.possibleTime.map(time => {
         return (
           <BoardSpace
@@ -13,8 +13,9 @@ const Board = (props) => {
             tasks={props.tasks}
             markAsDone={props.markAsDone}
             deleteTask={props.deleteTask}
-            visibilityFilter={props.visibilityFilter} />
-        )
+            visibilityFilter={props.visibilityFilter}
+            inDeleteMode={props.inDeleteMode}/>
+        );
       })}
     </div>
   );

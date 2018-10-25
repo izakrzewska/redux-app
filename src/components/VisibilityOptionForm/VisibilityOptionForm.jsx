@@ -2,7 +2,6 @@ import React from 'react';
 
 const VisibilityOptionForm = (props) => {
   return (
-    <div>
     <form>
       {props.visibilityOptions.map(filter => {
         return (
@@ -16,11 +15,7 @@ const VisibilityOptionForm = (props) => {
               value={filter.id}
               id={filter.id}
 
-              onChange={(event) => {
-                console.log('kdasda')
-                props.chooseVisibility({description: event.target.dataset.description, id: event.target.id})
-              }
-              }
+              onChange={(event) => props.chooseVisibility({description: event.target.dataset.description, id: event.target.id})}
               defaultChecked={filter.id === props.visibilityFilter.id}/>
             {filter.description}
           </label>
@@ -28,7 +23,6 @@ const VisibilityOptionForm = (props) => {
         );
       })}
     </form>
-    </div>
   );
 }
 

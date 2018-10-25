@@ -1,4 +1,11 @@
+html, body, #root {
+  height: 100vh;
+}
+
 .App {
   text-align: center;
-  margin: 10vh 10vw;
+  padding: 10vh 5vw;
+  background-color: #F5F5F5;
+  height: 100vh;
+  position: relative;
 }

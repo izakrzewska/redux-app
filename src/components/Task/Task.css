@@ -1,0 +1,27 @@
+.task--done .task__text {
+  text-decoration: line-through;
+}
+
+.task {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  position: relative;
+}
+
+.task__text {
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.task__delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+}

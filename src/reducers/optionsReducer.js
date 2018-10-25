@@ -24,6 +24,7 @@ const initialState = {
 		id: 'today'
 	},
 	taskBody: '',
+  inDeleteMode: false
 }
 
 const chooseTime = (state, action) => {
@@ -47,6 +48,12 @@ const clearInput = (state, action) => {
 	})
 }
 
+const enableDeleteMode = (state, action) => {
+  return Object.assign({}, state, {
+    inDeleteMode: !state.inDeleteMode
+  })
+}
+
 export default function reducer(state = initialState, action) {
 	switch ( action.type ) {
 				case actionTypes.CHOOSE_TIME:
@@ -55,6 +62,8 @@ export default function reducer(state = initialState, action) {
 					return setTaskBody(state, action);
 				case actionTypes.CLEAR_INPUT:
 					return clearInput(state, action);
+        case actionTypes.ENABLE_DELETE_MODE:
+          return enableDeleteMode(state, action);
 				default:
 					return state;
 	}

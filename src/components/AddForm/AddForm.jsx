@@ -3,20 +3,17 @@ import React from 'react';
 const AddForm = (props) => {
 
   return (
-    <div>
-      <form>
-      <input
-        id='taskBodyInput'
-        type='text'
-        value={props.taskBody}
-        onChange = {(event) =>
-
-          {
-            props.setTaskBody(event.target.value)
-          }
-
-          }
-        autoFocus />
+    <form>
+      <div className='uk-inline'>
+        <a className="uk-form-icon" href="#" uk-icon="icon: pencil"></a>
+        <input
+          className='uk-input uk-form-width-medium'
+          id='taskBodyInput'
+          type='text'
+          value={props.taskBody}
+          onChange = {(event) => props.setTaskBody(event.target.value)}
+          autoFocus />
+        </div>
         <div>
           {props.possibleTime.map(time => {
             return (
@@ -30,7 +27,7 @@ const AddForm = (props) => {
                   value={time.id}
                   id={time.id}
                   onChange={(event) => props.chooseTime({description: event.target.dataset.description, id: event.target.id})}
-                  defaultChecked={time.id === 'today'}/>
+                  defaultChecked={time.id === 'today'} />
                 {time.description}
               </label>
             );
@@ -41,12 +38,10 @@ const AddForm = (props) => {
             if (props.taskBody !== '') {
               props.addTask(props.taskBody, props.timeChosen)
               props.clearInput()
-            }
-          }}>Add task</button>
-
-
-          </form>
-        </div>
+            }}}>
+        Add task
+        </button>
+    </form>
   );
 }
 

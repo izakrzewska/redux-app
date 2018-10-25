@@ -39,7 +39,6 @@ const AddForm = (props) => {
         <button type='submit' onClick={(event) => {
             event.preventDefault();
             if (props.taskBody !== '') {
-              console.log(props.timeChosen, 'time z buttona')
               props.addTask(props.taskBody, props.timeChosen)
               props.clearInput()
             }

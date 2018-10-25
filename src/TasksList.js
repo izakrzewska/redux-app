@@ -8,12 +8,12 @@ import VisibilityOptionForm from './VisibilityOptionForm';
 class TasksList extends Component {
 
   render() {
-
     return (
       <React.Fragment>
         <VisibilityOptionForm
           visibilityOptions={this.props.visibilityOptions}
-          chooseVisibility={this.props.chooseVisibility} />
+          chooseVisibility={this.props.chooseVisibility}
+          visibilityFilter={this.props.visibilityFilter} />
         <AddForm
           addTask={this.props.addTask}
           possibleTime={this.props.possibleTime}
@@ -36,14 +36,13 @@ class TasksList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.mainReducer, 'state')
   return {
-    tasks: state.mainReducer.tasks,
-    possibleTime: state.mainReducer.possibleTime,
-    timeChosen: state.mainReducer.timeChosen,
-    taskBody: state.mainReducer.taskBody,
-    visibilityFilter: state.mainReducer.visibilityFilter,
-    visibilityOptions: state.mainReducer.visibilityOptions
+    tasks: state.tasksReducer.tasks,
+    possibleTime: state.optionsReducer.possibleTime,
+    timeChosen: state.optionsReducer.timeChosen,
+    taskBody: state.optionsReducer.taskBody,
+    visibilityFilter: state.visibilityReducer.visibilityFilter,
+    visibilityOptions: state.visibilityReducer.visibilityOptions
   }
 }
 

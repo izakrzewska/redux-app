@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import reducer from './reducers/index';
+import rootReducer from './reducers/index';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { save, load } from "redux-localstorage-simple";
 
-const rootReducer = combineReducers({
-  mainReducer: reducer
-});
-
-const store = createStore(rootReducer);
+const createStoreWithMiddleware = applyMiddleware(save({
+  namespace: 'toDoApp'
+}))(createStore);
+const store = createStoreWithMiddleware(rootReducer, load({
+  namespace: 'toDoApp'
+}));
 
 ReactDOM.render(
   <Provider store={store}>

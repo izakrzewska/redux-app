@@ -8,31 +8,33 @@ const BoardSpace = (props) => {
     <div
       className='board__space'>
       <h2>{props.possibleTime.description}</h2>
-      <ul>
-        {props.tasks.map((item, index) => {
-          if (item.time.id === props.possibleTime.id) {
-            if ((props.visibilityFilter === 'done') && (item.done)) {
+        {props.tasks.map((task, index) => {
+          if (task.time.id === props.possibleTime.id) {
+            if ((props.visibilityFilter.id === 'done') && (task.done)) {
               return (
                 <Task
-                  task={item}
+                  key={index}
+                  task={task}
                   index={index}
                   markAsDone={props.markAsDone}
                   deleteTask={props.deleteTask}
                   />
               )
-            } else if ((props.visibilityFilter === 'todo') && (!item.done)) {
+            } else if ((props.visibilityFilter.id === 'todo') && (!task.done)) {
               return (
                 <Task
-                  task={item}
+                  key={index}
+                  task={task}
                   index={index}
                   markAsDone={props.markAsDone}
                   deleteTask={props.deleteTask}
                   />
               )
-            } else if (props.visibilityFilter === 'all') {
+            } else if (props.visibilityFilter.id === 'all') {
               return (
                 <Task
-                  task={item}
+                  key={index}
+                  task={task}
                   index={index}
                   markAsDone={props.markAsDone}
                   deleteTask={props.deleteTask}
@@ -42,7 +44,6 @@ const BoardSpace = (props) => {
           }
           return null
         })}
-      </ul>
     </div>
   );
 }

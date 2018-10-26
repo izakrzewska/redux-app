@@ -3,13 +3,14 @@ import './VisibilityOptionForm.css';
 
 const VisibilityOptionForm = (props) => {
   return (
-    <form className='visibility-option-form'>
+    <div className='visibility-option-form'>
+    <form >
       {props.visibilityOptions.map(filter => {
         return (
             <label
               key={filter.id}
               htmlFor={filter.id}
-              className='uk-margin-left radio-button__label'>
+              className='uk-margin-left radio-button__label uk-text-emphasis'>
               <input
                 type="radio"
                 className='uk-radio radio-button'
@@ -24,6 +25,7 @@ const VisibilityOptionForm = (props) => {
         );
       })}
     </form>
+    </div>
   );
 }
 

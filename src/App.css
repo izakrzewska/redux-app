@@ -4,7 +4,7 @@ html, body, #root {
 
 .App {
   text-align: center;
-  padding: 10vh 5vw;
+  padding: 10vh 5vw 5vh 5vw;
   background-color: #F5F5F5;
   height: 100vh;
   position: relative;

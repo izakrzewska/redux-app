@@ -30,7 +30,7 @@ const AddForm = (props) => {
           {props.possibleTime.map(time => {
             return (
               <label
-                className='uk-margin-left radio-button__label'
+                className='uk-margin-left radio-button__label uk-text-emphasis'
                 key={time.id}
                 htmlFor={time.id}>
                 <input

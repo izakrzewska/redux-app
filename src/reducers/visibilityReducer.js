@@ -2,20 +2,20 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   visibilityFilter: {
-        description: 'All tasks',
+        description: 'all tasks',
         id: 'all'
       },
   visibilityOptions: [
     {
-      description: 'All tasks',
+      description: 'all tasks',
       id: 'all'
     },
     {
-      description: 'Done',
+      description: 'done',
       id: 'done'
     },
     {
-      description: 'To do',
+      description: 'to do',
       id: 'todo'
     }
   ]

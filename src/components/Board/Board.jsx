@@ -4,7 +4,7 @@ import './Board.css';
 
 const Board = (props) => {
   return (
-    <div className='uk-grid uk-grid-large uk-text-center' data-uk-grid-match uk-grid="masonry: true">
+    <div className='uk-grid uk-grid-large uk-text-center uk-margin-bottom' data-uk-grid-match uk-grid="masonry: true">
       {props.possibleTime.map(time => {
         return (
           <BoardSpace

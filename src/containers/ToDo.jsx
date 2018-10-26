@@ -13,10 +13,6 @@ class TasksList extends Component {
       <React.Fragment>
         <DeleteForm
           enableDeleteMode={this.props.enableDeleteMode}/>
-        <VisibilityOptionForm
-          visibilityOptions={this.props.visibilityOptions}
-          chooseVisibility={this.props.chooseVisibility}
-          visibilityFilter={this.props.visibilityFilter} />
         <AddForm
           addTask={this.props.addTask}
           possibleTime={this.props.possibleTime}
@@ -34,6 +30,10 @@ class TasksList extends Component {
             visibilityFilter={this.props.visibilityFilter}
             inDeleteMode={this.props.inDeleteMode}
           />
+          <VisibilityOptionForm
+            visibilityOptions={this.props.visibilityOptions}
+            chooseVisibility={this.props.chooseVisibility}
+            visibilityFilter={this.props.visibilityFilter} />
       </React.Fragment>
     );
   }

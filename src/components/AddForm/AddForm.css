@@ -1,0 +1,9 @@
+.radio-button {
+  margin-right: 5px;
+  height: 15px;
+  width: 15px;
+}
+
+.radio-button__label {
+  cursor: pointer;
+}
